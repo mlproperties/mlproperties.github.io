@@ -525,32 +525,89 @@
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-size: 15px;
-    letter-spacing: 0.02em;
   }
-  .compare-slider .before {
-    background: linear-gradient(150deg, #2C2A26, #17181A 75%);
-    color: #6B665C;
+  .compare-slider .img-layer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
-  .compare-slider .after {
-    background: linear-gradient(150deg, #E4D3BC, #C79A6C 80%);
-    color: #4A3A26;
+  .compare-slider .after-wrap .img-layer img {
+    width: 100%;
+    height: 100%;
   }
   .compare-slider .after-wrap {
     position: absolute;
     top: 0; left: 0;
-    width: 50%; height: 100%;
+    width: 100%; height: 100%;
     overflow: hidden;
+    clip-path: inset(0 50% 0 0);
   }
-  .compare-slider .after-wrap .img-layer {
-    width: 100vw;
-    max-width: 100%;
+  .project-caption {
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--stone);
+    margin-top: 10px;
   }
+
+  /* GALLERY */
+  .after-gallery {
+    margin-top: 64px;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .gallery-item {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    border: 1px solid var(--line);
+  }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+  .gallery-item .gallery-tag {
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+    background: var(--charcoal);
+    color: var(--paper);
+    padding: 6px 14px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+  }
+
+  /* MORE SOON CARD */
+  .more-soon-card {
+    aspect-ratio: 4/3;
+    border: 1.5px dashed var(--line);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 12px;
+    padding: 24px;
+  }
+  .more-soon-card .ring {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1.5px solid var(--brass);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--brass);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 20px;
+  }
+  .more-soon-card h3 { font-size: 18px; font-weight: 500; }
+  .more-soon-card p { font-size: 14px; color: var(--stone); max-width: 260px; }
   .slider-handle {
     position: absolute;
     top: 0;
@@ -614,21 +671,167 @@
   }
   .area-pill:hover { border-color: var(--brass); color: var(--brass); }
 
-  /* FAQ */
+  /* COMPARISON */
+  .compare-wrap { max-width: 760px; }
+  .compare-row { margin-bottom: 36px; }
+  .compare-row .compare-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  .compare-row .compare-label .name { font-weight: 600; }
+  .compare-row .compare-label .time { color: var(--brass); font-family: 'Fraunces', serif; font-style: italic; }
+  .compare-track {
+    width: 100%;
+    height: 10px;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .compare-fill {
+    height: 100%;
+    width: 0%;
+    transition: width 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .compare-fill.traditional { background: #B7AE9C; }
+  .compare-fill.ml { background: var(--brass); }
+  .compare-row.in .compare-fill.traditional { width: 100%; }
+  .compare-row.in .compare-fill.ml { width: 22%; }
+
+  /* STAT COUNTERS */
+  .counter-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .counter-box {
+    background: var(--paper);
+    padding: 32px 24px;
+    text-align: center;
+  }
+  .counter-box .counter-num {
+    font-family: 'Fraunces', serif;
+    font-size: 34px;
+    color: var(--brass);
+    margin-bottom: 8px;
+  }
+  .counter-box .counter-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--stone);
+  }
+
+  /* MAP */
+  .coverage-flex {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .coverage-map {
+    border: 1px solid var(--line);
+    overflow: hidden;
+    aspect-ratio: 4/3.4;
+  }
+  .coverage-map iframe { width: 100%; height: 100%; border: 0; filter: grayscale(0.3) contrast(1.05); }
+
+  .coverage-map { position: relative; }
+  .coverage-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 94%;
+    height: 90%;
+    border-radius: 50%;
+    border: 2px solid rgba(196, 62, 46, 0.75);
+    background: rgba(196, 62, 46, 0.07);
+    pointer-events: none;
+  }
+  .out-of-area {
+    margin-top: 20px;
+    font-size: 14px;
+    color: var(--stone);
+    line-height: 1.6;
+  }
+  .out-of-area strong { color: var(--charcoal); }
+
+  /* STICKY MOBILE CTA */
+  .sticky-cta {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 300;
+    background: var(--charcoal);
+    border-top: 1px solid var(--line-dark);
+    padding: 14px 20px;
+    text-align: center;
+  }
+  .sticky-cta a {
+    display: block;
+    background: var(--brass);
+    color: var(--charcoal);
+    padding: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 13px;
+  }
+  @media (max-width: 900px) {
+    .sticky-cta { display: block; }
+    body { padding-bottom: 68px; }
+  }
+
+  /* FAQ - accordion */
   .faq-item {
     border-bottom: 1px solid var(--line);
-    padding: 28px 0;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 40px;
   }
-  .faq-item h3 {
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 26px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    cursor: pointer;
+    font-family: 'Fraunces', serif;
     font-size: 18px;
     font-weight: 500;
+    color: var(--charcoal);
   }
-  .faq-item p {
+  .faq-q .plus {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--brass);
+    color: var(--brass);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: transform 0.25s;
+  }
+  .faq-item.open .faq-q .plus { transform: rotate(45deg); }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .faq-a p {
     color: var(--stone);
     font-size: 15px;
+    padding-bottom: 26px;
+    max-width: 640px;
   }
 
   /* CONTACT */
@@ -701,7 +904,9 @@
   }
 
   @media (max-width: 900px) {
-    .grid-4, .buy-list, .projects-grid, .about-flex, .contact-grid, .help-wrap, .form-row, .steps { grid-template-columns: 1fr; }
+    .grid-4, .buy-list, .projects-grid, .about-flex, .contact-grid, .help-wrap, .form-row, .steps, .timeline, .founder-row, .counter-strip, .coverage-flex, .gallery-grid { grid-template-columns: 1fr; }
+    .timeline::before { display: none; }
+    .founder-photo { margin: 0 auto; }
     .step:not(:last-child)::after { display: none; }
     .step { padding-bottom: 24px; }
     .hero h1 { font-size: 38px; }
@@ -729,6 +934,10 @@
   </div>
 </nav>
 
+<div class="sticky-cta">
+  <a href="#contact">Request a Call Back</a>
+</div>
+
 <section class="hero">
   <div class="container hero-inner">
     <div class="hero-eyebrow">Worcester &amp; Surrounding Areas</div>
@@ -750,6 +959,15 @@
   <div class="container">
     <div><strong>ML Properties (Worcester) Limited</strong> — Registered Company No. 15807809</div>
     <div>Est. 2024 · Droitwich Spa, Worcestershire</div>
+  </div>
+</div>
+
+<div class="container" style="margin-top:48px; margin-bottom:0;">
+  <div class="counter-strip reveal">
+    <div class="counter-box"><div class="counter-num" data-count="2024">0</div><div class="counter-label">Founded</div></div>
+    <div class="counter-box"><div class="counter-num" data-count="12" data-suffix="+">0</div><div class="counter-label">Areas Covered</div></div>
+    <div class="counter-box"><div class="counter-num" data-count="100" data-suffix="%">0</div><div class="counter-label">Confidential</div></div>
+    <div class="counter-box"><div class="counter-num" data-count="0" data-prefix="£">0</div><div class="counter-label">Agent Fees</div></div>
   </div>
 </div>
 
@@ -889,6 +1107,24 @@
   </div>
 </section>
 
+<section class="section">
+  <div class="container">
+    <div class="section-eyebrow reveal">The Difference</div>
+    <h2 class="section-title reveal">A traditional sale vs. ML Properties</h2>
+    <p class="section-intro reveal">An illustration of how the two routes typically compare — every sale is different, and we're always upfront about timescales for your specific property.</p>
+    <div class="compare-wrap reveal">
+      <div class="compare-row" data-compare>
+        <div class="compare-label"><span class="name">Traditional Estate Agent Sale</span><span class="time">Months of viewings &amp; chains</span></div>
+        <div class="compare-track"><div class="compare-fill traditional"></div></div>
+      </div>
+      <div class="compare-row" data-compare>
+        <div class="compare-label"><span class="name">Selling Directly to ML Properties</span><span class="time">No viewings, no chain, your timescale</span></div>
+        <div class="compare-track"><div class="compare-fill ml"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section" id="projects">
   <div class="container">
     <div class="press-strip reveal">
@@ -910,38 +1146,74 @@
 
       <div class="project-card">
         <div class="compare-slider" data-slider>
-          <div class="img-layer before">Before</div>
+          <div class="img-layer before"><img src="malvern-garden-before.jpg" alt="Malvern garden before renovation"></div>
           <div class="after-wrap">
-            <div class="img-layer after">After</div>
+            <div class="img-layer after"><img src="malvern-garden-after.jpg" alt="Malvern garden after renovation"></div>
           </div>
           <div class="label-tag label-before">Before</div>
           <div class="label-tag label-after">After</div>
           <div class="slider-handle"></div>
         </div>
         <div class="project-info">
-          <h3>Project One — Worcester</h3>
-          <p>A dated three-bedroom property brought back to life with a full internal refurbishment, new kitchen and bathroom, and modernised throughout.</p>
+          <h3>Malvern — The Garden</h3>
+          <p>A bare, cleared plot transformed into a landscaped garden with a full-width patio and bi-fold doors opening straight out from the new kitchen extension.</p>
         </div>
       </div>
 
       <div class="project-card">
         <div class="compare-slider" data-slider>
-          <div class="img-layer before">Before</div>
+          <div class="img-layer before"><img src="malvern-view-before.jpg" alt="View over the Malvern plot before renovation, overlooking the Malvern Hills"></div>
           <div class="after-wrap">
-            <div class="img-layer after">After</div>
+            <div class="img-layer after"><img src="malvern-view-after.jpg" alt="View over the finished Malvern garden, overlooking the Malvern Hills"></div>
           </div>
           <div class="label-tag label-before">Before</div>
           <div class="label-tag label-after">After</div>
           <div class="slider-handle"></div>
         </div>
         <div class="project-info">
-          <h3>Project Two — Droitwich Spa</h3>
-          <p>A probate property in need of complete renovation, transformed into a high-quality family home ready for its next owner.</p>
+          <h3>Malvern — The View</h3>
+          <p>Overgrown scrub and a half-finished shell gave way to a landscaped rear garden — with the Malvern Hills as a backdrop throughout.</p>
         </div>
       </div>
 
+      <div class="project-card">
+        <div class="compare-slider" data-slider>
+          <div class="img-layer before"><img src="malvern-exterior-before.jpg" alt="Malvern property exterior before renovation, unfinished brickwork"></div>
+          <div class="after-wrap">
+            <div class="img-layer after"><img src="malvern-exterior-after.jpg" alt="Malvern property exterior after renovation, aerial view"></div>
+          </div>
+          <div class="label-tag label-before">Before</div>
+          <div class="label-tag label-after">After</div>
+          <div class="slider-handle"></div>
+        </div>
+        <div class="project-info">
+          <h3>Malvern — The Exterior</h3>
+          <p>A stripped-back shell with cleared surrounding land, rebuilt into a complete family home with a landscaped garden and driveway.</p>
+        </div>
+      </div>
+
+      <div class="more-soon-card">
+        <div class="ring">＋</div>
+        <h3>More transformations soon</h3>
+        <p>We're adding further completed projects to this page as they finish — check back soon.</p>
+      </div>
+
     </div>
-    <p style="margin-top:28px; color:var(--stone); font-size:13px;">Placeholder tiles above — swap in real before/after photos once available (see notes at the bottom of the file).</p>
+
+    <div class="after-gallery">
+      <h3 style="font-family:'Fraunces',serif; font-weight:500; font-size:20px; margin-bottom:24px;">Inside the finished home</h3>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="malvern-kitchen-after.jpg" alt="Finished open-plan kitchen at the Malvern property">
+          <div class="gallery-tag">Kitchen</div>
+        </div>
+        <div class="gallery-item">
+          <img src="malvern-hallway-after.jpg" alt="Finished hallway at the Malvern property">
+          <div class="gallery-tag">Hallway</div>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:28px; color:var(--stone); font-size:13px;">Photos of the Malvern project. Further completed projects will be added here soon.</p>
   </div>
 </section>
 
@@ -949,19 +1221,29 @@
   <div class="container">
     <div class="section-eyebrow reveal">Coverage</div>
     <h2 class="section-title reveal">Areas we cover</h2>
-    <div class="areas-list reveal">
-      <div class="area-pill">Worcester</div>
-      <div class="area-pill">St John's</div>
-      <div class="area-pill">Lower Broadheath</div>
-      <div class="area-pill">Hallow</div>
-      <div class="area-pill">Rushwick</div>
-      <div class="area-pill">Kempsey</div>
-      <div class="area-pill">Droitwich</div>
-      <div class="area-pill">Malvern</div>
-      <div class="area-pill">Pershore</div>
-      <div class="area-pill">Bromsgrove</div>
-      <div class="area-pill">Redditch</div>
-      <div class="area-pill">Evesham</div>
+    <p class="section-intro reveal">We purchase properties throughout Worcester and the surrounding villages — pan and zoom the map to explore the area.</p>
+    <div class="coverage-flex reveal">
+      <div class="coverage-map">
+        <iframe src="https://maps.google.com/maps?q=Worcestershire,+UK&z=9&output=embed" loading="lazy" title="Map of areas ML Properties covers across Worcestershire" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="coverage-ring"></div>
+      </div>
+      <div>
+        <div class="areas-list">
+          <div class="area-pill">Worcester</div>
+          <div class="area-pill">St John's</div>
+          <div class="area-pill">Lower Broadheath</div>
+          <div class="area-pill">Hallow</div>
+          <div class="area-pill">Rushwick</div>
+          <div class="area-pill">Kempsey</div>
+          <div class="area-pill">Droitwich</div>
+          <div class="area-pill">Malvern</div>
+          <div class="area-pill">Pershore</div>
+          <div class="area-pill">Bromsgrove</div>
+          <div class="area-pill">Redditch</div>
+          <div class="area-pill">Evesham</div>
+        </div>
+        <p class="out-of-area"><strong>Don't see your area listed?</strong> Get in touch regardless — we consider properties outside our core coverage on a case-by-case basis and are always happy to have a conversation.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -972,24 +1254,24 @@
     <h2 class="section-title reveal">Frequently asked questions</h2>
     <div class="reveal">
       <div class="faq-item">
-        <h3>Do I have to accept your offer?</h3>
-        <p>Absolutely not. There is no obligation whatsoever.</p>
+        <button class="faq-q" type="button"><span>Do I have to accept your offer?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Absolutely not. There is no obligation whatsoever.</p></div>
       </div>
       <div class="faq-item">
-        <h3>How quickly can you buy?</h3>
-        <p>Every purchase is different, but we can often move significantly quicker than a traditional sale if required.</p>
+        <button class="faq-q" type="button"><span>How quickly can you buy?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Every purchase is different, but we can often move significantly quicker than a traditional sale if required.</p></div>
       </div>
       <div class="faq-item">
-        <h3>Will I need to carry out repairs?</h3>
-        <p>No. We regularly purchase homes in need of updating or refurbishment.</p>
+        <button class="faq-q" type="button"><span>Will I need to carry out repairs?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>No. We regularly purchase homes in need of updating or refurbishment.</p></div>
       </div>
       <div class="faq-item">
-        <h3>Are there estate agent fees?</h3>
-        <p>No. If ML Properties purchases your property directly, there are no estate agency fees to pay.</p>
+        <button class="faq-q" type="button"><span>Are there estate agent fees?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>No. If ML Properties purchases your property directly, there are no estate agency fees to pay.</p></div>
       </div>
       <div class="faq-item">
-        <h3>Do you buy any property?</h3>
-        <p>We buy a limited number of properties each year that meet our investment criteria. If your property isn't suitable for us, we'll tell you honestly.</p>
+        <button class="faq-q" type="button"><span>Do you buy any property?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>We buy a limited number of properties each year that meet our investment criteria. If your property isn't suitable for us, we'll tell you honestly.</p></div>
       </div>
     </div>
   </div>
@@ -1049,7 +1331,7 @@
       const rect = slider.getBoundingClientRect();
       let pct = ((x - rect.left) / rect.width) * 100;
       pct = Math.max(0, Math.min(100, pct));
-      afterWrap.style.width = pct + '%';
+      afterWrap.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
       handle.style.left = pct + '%';
     }
 
@@ -1073,6 +1355,60 @@
     });
   }, { threshold: 0.15 });
   revealEls.forEach(el => io.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(function(item) {
+    const btn = item.querySelector('.faq-q');
+    const answer = item.querySelector('.faq-a');
+    btn.addEventListener('click', function() {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(openItem) {
+        openItem.classList.remove('open');
+        openItem.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Animated stat counters
+  const counters = document.querySelectorAll('.counter-num');
+  const counterIo = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.getAttribute('data-count'), 10);
+        const prefix = el.getAttribute('data-prefix') || '';
+        const suffix = el.getAttribute('data-suffix') || '';
+        const duration = 1200;
+        const start = performance.now();
+        function tick(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const value = Math.round(target * eased);
+          el.textContent = prefix + value + suffix;
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+        counterIo.unobserve(el);
+      }
+    });
+  }, { threshold: 0.4 });
+  counters.forEach(el => counterIo.observe(el));
+
+  // Comparison bar reveal
+  const compareRows = document.querySelectorAll('[data-compare]');
+  const compareIo = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        compareIo.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  compareRows.forEach(el => compareIo.observe(el));
 </script>
 
 </body>
